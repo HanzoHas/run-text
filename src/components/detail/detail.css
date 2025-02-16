@@ -1,0 +1,247 @@
+/* Detail Container */
+.detail {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 98%;
+  overflow-y: auto;
+  background-color: #2f2d52; /* Dark background */
+  color: white; /* Light text */
+  position: relative; /* Ensure close button is positioned relative to this container */
+}
+
+.detail::-webkit-scrollbar {
+  width: 6px;
+}
+
+.detail::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.detail::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.detail::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Close Button */
+.close-details {
+  position: absolute; /* Position relative to .details-panel */
+  top:1px; /* Stick to the top */
+  left: 10px; /* Stick to the left */
+  background: none; /* No background */
+  border: none;
+  color: white; /* White X */
+  font-size: 24px; /* Larger X */
+  cursor: pointer;
+  z-index: 10; /* Ensure it's above other elements */
+  padding: 10px; /* Add some padding for better clickability */
+}
+
+.close-details:hover {
+  color: #e74c3c; /* Red X on hover */
+}
+
+/* Rest of the CSS remains the same */
+.detail .user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  margin-top: 30px; /* Add margin to avoid overlap with close button */
+}
+
+.detail .user img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.detail .user h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: white; /* Light text */
+}
+
+.detail .user p {
+  font-size: 14px;
+  color: #a5a5a5; /* Light gray text */
+}
+
+.detail .info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detail .info .option {
+  background: #3e3c5e; /* Darker background for options */
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.detail .info .option .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.detail .info .option .title span {
+  font-size: 16px;
+  font-weight: bold;
+  color: white; /* Light text */
+}
+
+.detail .info .option .title img {
+  width: 20px;
+  height: 20px;
+  filter: invert(1); /* Invert icon color for visibility */
+}
+
+.detail .info .option .content {
+  margin-top: 10px;
+}
+
+.detail .info .option .content .setting-item {
+  margin-bottom: 10px;
+}
+
+.detail .info .option .content .setting-item label {
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: white; /* Light text */
+}
+
+.detail .info .option .content .setting-item select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #555;
+  background-color: #2f2d52; /* Dark background */
+  color: white; /* Light text */
+}
+
+.detail .info .option .content .theme-options {
+  display: flex;
+  gap: 10px;
+}
+
+.detail .info .option .content .theme-options button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white; /* Light text */
+}
+
+.detail .info .option .content .theme-options .theme-light {
+  background: #5183fe; /* Blue for light theme */
+}
+
+.detail .info .option .content .theme-options .theme-dark {
+  background: #333; /* Dark gray for dark theme */
+}
+
+.detail .info .option .content .privacy-item {
+  margin-bottom: 10px;
+}
+
+.detail .info .option .content .privacy-item h4 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: white; /* Light text */
+}
+
+.detail .info .option .content .privacy-item p {
+  font-size: 12px;
+  color: #a5a5a5; /* Light gray text */
+}
+
+.detail .info .option .photos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detail .info .option .photos .photoItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: #3e3c5e; /* Darker background for photo items */
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.detail .info .option .photos .photoItem .photoDetail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.detail .info .option .photos .photoItem .photoDetail img {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.detail .info .option .photos .photoItem .photoDetail span {
+  font-size: 12px;
+  color: #a5a5a5; /* Light gray text */
+}
+
+.detail .info .option .photos .photoItem .icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  filter: invert(1); /* Invert icon color for visibility */
+}
+
+.detail .info .option .photos .no-photos {
+  font-size: 14px;
+  color: #a5a5a5; /* Light gray text */
+  text-align: center;
+}
+
+.detail .info .option .files .no-files {
+  font-size: 14px;
+  color: #a5a5a5; /* Light gray text */
+  text-align: center;
+}
+
+.detail .info button {
+  padding: 10px 20px;
+  background: #5183fe; /* Blue button */
+  color: white; /* Light text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.detail .info button.logout {
+  background: #e74c3c; /* Red button for logout */
+}
+
+

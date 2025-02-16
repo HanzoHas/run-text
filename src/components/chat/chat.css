@@ -1,0 +1,378 @@
+.chat-container {
+  flex: 1;
+  height: 100vh;
+  position: relative;
+  overflow: visible;
+}
+
+.chat {
+  flex: 0.7;
+  border-left: 1px solid #dddddd35;
+  border-right: 1px solid #dddddd35;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top Section - 10% height */
+.top {
+  height: 10%;
+  min-height: 70px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #dddddd35;
+}
+
+.top .user {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.top .user img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.top .texts {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.top .texts span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.top .texts p {
+  font-size: 12px;
+  font-weight: 300;
+  color: #a5a5a5;
+}
+
+.top .icons {
+  display: flex;
+  gap: 15px;
+}
+
+.top .icons img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.info-icon {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.info-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Center Section - 80% height with wallpaper */
+.center {
+  height: 80%;
+  padding: 15px 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Wallpaper overlay - Covers only the center section */
+.center::before {
+  content: "";
+  position: fixed; /* Fixed to cover only the center */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(17, 25, 40, 0.3); /* Adjusted transparency */
+  z-index: 0;
+  pointer-events: none; /* Allow interaction with messages */
+}
+
+/* Ensure all messages are covered by the overlay */
+.center .message {
+  max-width: 70%;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  position: relative;
+  z-index: 1; /* Messages appear above the overlay */
+}
+
+.center .message.own {
+  align-self: flex-end;
+}
+
+.center .texts {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 100%;
+}
+
+.center .texts p {
+  padding: 10px 14px;
+  margin: 0;
+  background-color: #2fec42;
+  border-radius: 0px 20px 20px 20px;
+  word-break: break-word;
+  white-space: pre-wrap;
+  line-height: 1.4;
+  width: fit-content;
+}
+
+.center .message.own .texts p {
+  background-color: #021442;
+  border-radius: 20px 0px 20px 20px;
+}
+
+.center .texts span {
+  font-size: 12px;
+  color: #046953;
+  padding: 0 8px;
+}
+
+.center .image-container img {
+  max-width: 280px;
+  max-height: 280px;
+  border-radius: 12px;
+}
+
+.center .deleted-message {
+  color: #a5a5a5;
+  font-style: italic;
+  padding: 12px 16px;
+  margin: 0;
+}
+
+.center::-webkit-scrollbar {
+  width: 6px;
+}
+
+.center::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.center::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.center::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* Bottom Section - 10% height */
+.bottom {
+  height: 10%;
+  min-height: 60px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-top: 1px solid #dddddd35;
+}
+
+.bottom .icons {
+  display: flex;
+  gap: 15px;
+}
+
+.bottom img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.bottom input {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: none;
+  background-color: rgba(17, 25, 40, 0.5);
+  color: white;
+  font-size: 13px;
+}
+
+.bottom input:disabled {
+  cursor: not-allowed;
+}
+
+.bottom .emoji {
+  position: relative;
+}
+
+.bottom .emoji .picker {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+}
+
+.bottom .sendButton {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: #5183fe;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.bottom .sendButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Context Menu */
+.context-menu {
+  position: fixed;
+  z-index: 9999;
+  background: #000;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 8px 0;
+  min-width: 120px;
+}
+
+.context-menu button {
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  background: none;
+  border: none;
+  color: #000000;
+  text-align: left;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.context-menu button:hover {
+  background: #3e3c6e;
+}
+
+/* Details Panel */
+.details-panel {
+  width: 350px;
+  background: #f5f5f5;
+  border-left: 1px solid #ddd;
+  height: 100vh;
+  position: fixed;
+  right: -350px;
+  top: 0;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+  padding: 0;
+  z-index: 10;
+}
+
+.chat-container.show-details .details-panel {
+  right: 0;
+}
+
+.close-details {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: none;
+  border: none;
+  color: #e74c3c;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.close-details:hover {
+  color: #c0392b;
+}
+
+/* Wallpaper Options (for Details Panel) */
+.wallpaper-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.wallpaper-item {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.wallpaper-item:hover {
+  border-color: #5183fe;
+}
+
+.wallpaper-item.default {
+  background: #2f2d52;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.custom-wallpaper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.custom-wallpaper input {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* Previous Wallpapers Section */
+.previous-wallpapers {
+  margin-top: 20px;
+}
+
+.previous-wallpapers h4 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.previous-wallpapers .wallpaper-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .chat-container.show-details .chat {
+    width: calc(100% - 350px);
+  }
+}
+
+
+
+

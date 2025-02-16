@@ -1,0 +1,8 @@
+/* list.css */
+.list {
+  flex: 0 0 30%; /* Take 30% width (don't grow/shrink) */
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #dddddd35; /* Add separator */
+  overflow: hidden; /* Prevent overflow */
+}
